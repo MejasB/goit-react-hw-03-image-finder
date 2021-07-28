@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/MejasB/goit-react-hw-03-image-finder/static/css/main.43c4cd9e.chunk.css",
+    "main.js": "/MejasB/goit-react-hw-03-image-finder/static/js/main.a1c594ca.chunk.js",
+    "main.js.map": "/MejasB/goit-react-hw-03-image-finder/static/js/main.a1c594ca.chunk.js.map",
+    "runtime-main.js": "/MejasB/goit-react-hw-03-image-finder/static/js/runtime-main.e08be453.js",
+    "runtime-main.js.map": "/MejasB/goit-react-hw-03-image-finder/static/js/runtime-main.e08be453.js.map",
+    "static/js/2.2b687be0.chunk.js": "/MejasB/goit-react-hw-03-image-finder/static/js/2.2b687be0.chunk.js",
+    "static/js/2.2b687be0.chunk.js.map": "/MejasB/goit-react-hw-03-image-finder/static/js/2.2b687be0.chunk.js.map",
+    "index.html": "/MejasB/goit-react-hw-03-image-finder/index.html",
+    "static/css/main.43c4cd9e.chunk.css.map": "/MejasB/goit-react-hw-03-image-finder/static/css/main.43c4cd9e.chunk.css.map",
+    "static/js/2.2b687be0.chunk.js.LICENSE.txt": "/MejasB/goit-react-hw-03-image-finder/static/js/2.2b687be0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e08be453.js",
+    "static/js/2.2b687be0.chunk.js",
+    "static/css/main.43c4cd9e.chunk.css",
+    "static/js/main.a1c594ca.chunk.js"
+  ]
+}
