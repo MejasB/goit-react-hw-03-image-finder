@@ -17,11 +17,13 @@ class App extends Component {
     showLoader: false,
   };
 
-  componentDidUpdate = () => {
-    window.scrollTo({
-      top: document.documentElement.scrollHeight,
-      behavior: "smooth",
-    });
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.images !== this.state.images) {
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   };
 
   onSearchSubmit = (searchTerm) => {
