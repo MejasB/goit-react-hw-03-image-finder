@@ -19,7 +19,7 @@ class Modal extends Component {
 
   render() {
     return (
-      <Overlay onClick={this.props.closeModal}>
+      <Overlay onClick={this.props.closeModal} onKeyDown={this.onKeyDown}>
         <div className="Modal">
           <img src={this.props.largeImageURL} alt="" />
         </div>

@@ -3,11 +3,9 @@ import PropTypes from "prop-types";
 import ImageGalleryItem from "../imageGalleryItem/ImageGalleryItem";
 import { ImageGalleryContainer } from "./ImageGalleryStyled";
 
-const ImageGallery = ({ onItemClick, images }) => {
+const ImageGallery = ({ images }) => {
   return (
-    <ImageGalleryContainer
-      onClick={(event) => onItemClick(event.target.dataset.largeImageUrl)}
-    >
+    <ImageGalleryContainer>
       {images.map((image) => (
         <ImageGalleryItem
           key={image.id}
@@ -21,7 +19,6 @@ const ImageGallery = ({ onItemClick, images }) => {
 };
 
 ImageGallery.propTypes = {
-  onItemClick: PropTypes.func.isRequired,
   images: PropTypes.arrayOf(
     PropTypes.shape({
       webformatURL: PropTypes.string.isRequired,

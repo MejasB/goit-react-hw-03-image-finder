@@ -3,7 +3,6 @@ import { MyLoader } from "./components/loader/Loader";
 import { getImagesWithDelay } from "./api";
 import Button from "./components/button/Button";
 import ImageGallery from "./components/imageGallery/ImageGallery";
-import Modal from "./components/modal/Modal";
 import Searchbar from "./components/searchbar/Searchbar";
 
 const apiDelay = 100;
@@ -18,27 +17,28 @@ class App extends Component {
   };
 
   componentDidUpdate = (prevProps, prevState) => {
-    if (prevState.images !== this.state.images) {
+    if (prevState.pageNum !== this.state.pageNum) {
       window.scrollTo({
         top: document.documentElement.scrollHeight,
         behavior: "smooth",
       });
     }
+    if (prevState.searchTerm !== this.state.searchTerm) {
+      getImagesWithDelay(this.state.searchTerm, 1, apiDelay).then((images) =>
+        this.setState(
+          {
+            images: images,
+            pageNum: 1,
+          },
+          this.hideLoader()
+        )
+      );
+    }
   };
 
   onSearchSubmit = (searchTerm) => {
+    this.setState({ searchTerm: searchTerm });
     this.showLoader();
-
-    getImagesWithDelay(searchTerm, 1, apiDelay).then((images) =>
-      this.setState(
-        (prevState) => ({
-          images: images,
-          pageNum: 1,
-          searchTerm: searchTerm,
-        }),
-        this.hideLoader
-      )
-    );
   };
 
   onBtnClick = () => {
@@ -48,22 +48,11 @@ class App extends Component {
       this.state.pageNum + 1,
       apiDelay
     ).then((newImages) =>
-      this.setState(
-        (prevState) => ({
-          images: [...prevState.images, ...newImages],
-          pageNum: prevState.pageNum + 1,
-        }),
-        this.hideLoader
-      )
+      this.setState((prevState) => ({
+        images: [...prevState.images, ...newImages],
+        pageNum: prevState.pageNum + 1,
+      }))
     );
-  };
-
-  onItemClick = (largeImageUrl) => {
-    this.setState({ modalLargeURL: largeImageUrl });
-  };
-
-  closeModal = () => {
-    this.setState({ modalLargeURL: "" });
   };
 
   showLoader = () => {
@@ -90,12 +79,6 @@ class App extends Component {
         )}
         {this.state.images.length > 0 && (
           <Button onClick={this.onBtnClick}></Button>
-        )}
-        {this.state.modalLargeURL && (
-          <Modal
-            largeImageURL={this.state.modalLargeURL}
-            closeModal={this.closeModal}
-          ></Modal>
         )}
         {this.state.showLoader && <MyLoader></MyLoader>}
       </>
